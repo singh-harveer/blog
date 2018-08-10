@@ -1,0 +1,52 @@
+syntax="proto3";
+package blog;
+service Blog{
+	
+rpc CreateBlog(BlogCreationObject) returns (BlogCreationResponse) {}
+rpc BlogListing(BlogListingRequest) returns (BlogListingResponse) {}
+
+
+}
+
+message BlogCreationObject
+{
+	string Title=1;
+	string Content=2;
+	string Author=3;
+
+}
+
+
+message BlogCreationResponse
+{
+	Meta meta=1;
+	string data=2;
+}
+
+message BlogListingResponse
+{
+	Meta meta = 1;
+	repeated Response data = 2;
+}
+
+message Response {
+	string title = 1;
+	string author = 2;
+	string content = 3;
+}
+
+message BlogListingRequest
+{
+	string Title = 1; 
+}
+
+message Meta 
+{
+	bool success = 1;
+	string message = 2;
+	int32  code = 3;
+
+}
+
+
+
