@@ -31,18 +31,20 @@ class Blog(Base):
 
 	#to add new blog into data base
 	@classmethod
-	def createBlog(self):
+	def createBlog(cls, obj):
 
 		try:
 			session=getSession()
-			session.begin()
-			session.add(self)
+			print('1=======')
+			session.add(obj)
+			print('2======')
 			session.commit()
-			return self
+			return obj
 		except Exception as e:
 			session.rollback()
-			print("exception accured while trying to insert ddata in to blog DB")
-		return self
+			print(str(e))
+			print("exception accured while trying to insert data in to blog DB")
+		return obj
 
 	#to return all blogs from
 	@classmethod
@@ -67,7 +69,7 @@ class Blog(Base):
 			print(str(e))
 			return result
 
-		print('====from model/getAllBlog()=========')
+		#print('====from model/getAllBlog()=========')
 		print(result)
 
 		return result

@@ -33,7 +33,7 @@ class BlogServicer(blog_pb2_grpc.BlogServicer):
 
 		try:
 			newBlog=Blog(request.Title,request.Author,request.Content)
-			Blog.createBlog()
+			result.data = Blog.createBlog(newBlog)
 			result.meta.success=True
 			result.data='blog has been created successfully!!'
 
@@ -52,8 +52,8 @@ class BlogServicer(blog_pb2_grpc.BlogServicer):
 		try:
 
 			result.data=Blog.getAllBlog()
-			print('===from server=======')
-			print(result)
+			# print('===from server=======')
+			# print(result)
 			result.meta.success=True
 
 		except Exception as e:

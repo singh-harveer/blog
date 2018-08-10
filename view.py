@@ -10,7 +10,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-@api.route('/blogs')
+@api.route('/blogs/')
 class BlogListing(Resource):
     '''test'''
 
@@ -23,6 +23,21 @@ class BlogListing(Resource):
         except Exception as ex:
             return str(ex)
         return json.loads(message_to_Json(blogList))
+
+
+@api.route('/create/')
+class CreateBlog(Resource):
+    '''to create a new blog'''
+
+    def post(self):
+
+        payload = self.api.payload
+        title = payload.get('title')
+        author = payload.get('author')
+        content = payload.get('content')
+        blog=blogClient()
+        blogCreationResponse = blog.createBlog(title,author,content)
+        return json.loads(message_to_Json(blogCreationResponse))
 
 
 if __name__ == '__main__':
