@@ -19,10 +19,7 @@ class blogClient(object):
 
 		request=self.blog_message.BlogListingRequest(Title=title)
 		response=self.stub.BlogListing(request)
-
-		if response:
-			print(response)
-
+		
 		return response
 
 	#create a new blog
@@ -33,7 +30,7 @@ class blogClient(object):
 		response = self.stub.CreateBlog(createBlogRequest)
 		if response:
 			print(response)
-		return protobuf_to_json(response)
+		return response
 
 
 
