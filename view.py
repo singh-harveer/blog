@@ -12,10 +12,7 @@ api = Api(app)
 
 @api.route('/blogs/')
 class BlogListing(Resource):
-    '''test'''
-
     def get(self):
-        '''test'''
 
         try:
             blog = blogClient()
