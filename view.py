@@ -13,7 +13,6 @@ api = Api(app)
 @api.route('/blogs/')
 class BlogListing(Resource):
     def get(self):
-
         try:
             blog = blogClient()
             blogList = blog.blogListing('this is title')
@@ -25,9 +24,7 @@ class BlogListing(Resource):
 @api.route('/create/')
 class CreateBlog(Resource):
     '''to create a new blog'''
-
     def post(self):
-
         payload = self.api.payload
         title = payload.get('title')
         author = payload.get('author')
